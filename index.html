@@ -55,6 +55,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		var pagename = document.title;
 		var url = document.URL;
 		var host = window.location.host;
+		var d1 = new Date(); 
+		var currDate = d1.toISOString().slice(0, 10);
 		var digitalData = {
 
 				page: {
@@ -68,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				information:{
 					domain : host,
 					device: "Desktop",
-					date: "28/03/2021"
+					date: currDate
 				}
 		}
 	</script>
