@@ -57,6 +57,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		var host = window.location.host;
 		var d1 = new Date(); 
 		var currDate = d1.toISOString().slice(0, 10);
+		var currDevice = "";
+		if(screen.width <= 421)
+			currDevice = "Mobile";
+		else if (screen.width > 421 && screen.width <= 1024)
+			currDevice = "Tablet";
+		else
+			currDevice = "Desktop";
 		var digitalData = {
 
 				page: {
@@ -69,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				},
 				information:{
 					domain : host,
-					device: "Desktop",
+					device: currDevice,
 					date: currDate
 				}
 		}
