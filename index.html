@@ -78,7 +78,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					domain : host,
 					device: currDevice,
 					date: currDate
-				}
+				},
+				prodEvent: "",
+				product : []
 		}
 	</script>
 	
@@ -613,6 +615,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
+<script>
+	let prod = document.getElementsByClassName("snipcart-thumb");
+	for(let i = 0;i < prod.length;i++) {
+		var prodName = prod[i].children[1].innerText;
+		var prodPrice = prod[i].children[2].innerText.split(' ')[0];
+
+		var productObj = {
+			category : "Example Category",
+			name: prodName,
+			qty: 1,
+			price: prodPrice,
+			prodId: i
+		}
+
+		digitalData.product.push(productObj); 
+	}
+
+
+
+
+</script>
 <script src="js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
