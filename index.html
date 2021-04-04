@@ -620,13 +620,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	for(let i = 0;i < prod.length;i++) {
 		var prodName = prod[i].children[1].innerText;
 		var prodPrice = prod[i].children[2].innerText.split(' ')[0];
+		var id = i+1;
+		console.log(id);
 
 		var productObj = {
 			category : "Example Category",
 			name: prodName,
 			qty: 1,
 			price: prodPrice,
-			prodId: i+1
+			prodId: id
 		}
 
 		digitalData.product.push(productObj);  
