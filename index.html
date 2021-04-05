@@ -79,7 +79,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					device: currDevice,
 					date: currDate
 				},
-				prodEvent: "",
 				product : []
 		}
 	</script>
@@ -634,7 +633,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	}
 </script>
 
-<!-- <script>
+<script>
 	document.getElementById('view_cart').addEventListener('click', function() {
 		digitalData.product = [];
 		let prod = document.getElementsByClassName('minicart-item');
@@ -652,9 +651,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			digitalData.product.push(productObj);
 		}
+		_satellite.track('products', digitalData.product);
 		console.log(digitalData.product);
 	})
-</script> -->
+</script>
 
 <script src="js/bootstrap.min.js"></script>
 <script>
