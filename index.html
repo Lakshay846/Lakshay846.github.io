@@ -337,7 +337,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" onclick ="test()" name="submit" value="Add to cart" class="button" />
+													<input type="submit" onclick ="test()" name="submit" value="Add to cart" class="button" id="addtocart"/>
 												</fieldset>
 													
 											</form>
@@ -372,7 +372,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" onclick ="test()"/>
+													<input type="submit" name="submit" value="Add to cart" class="button" id="addtocart"/>
 												</fieldset>
 											</form>
 										</div>
@@ -408,7 +408,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" onclick ="test()"/>
+													<input type="submit" name="submit" value="Add to cart" class="button" id="addtocart"/>
 												</fieldset>
 											</form>
 										</div>
@@ -444,7 +444,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" onclick ="test()"/>
+													<input type="submit" name="submit" value="Add to cart" class="button" id="addtocart"/>
 												</fieldset>
 											</form>
 										</div>
@@ -633,6 +633,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		digitalData.product.push(productObj);  
 	}
 </script>
+
 <script>
 	document.getElementById('view_cart').addEventListener('click', function() {
 		digitalData.product = [];
@@ -645,14 +646,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			var productObj = {
 			category : "Hot Offers",
 			name: prodName,
-			qty: 1,
+			qty: qty,
 			price: prodPrice
 			}
 			
 			digitalData.product.push(productObj);
 		}
+		console.log(digitalData.product);
 	})
 </script>
+
 <script src="js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
