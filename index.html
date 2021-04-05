@@ -621,7 +621,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		var prodName = prod[i].children[1].innerText;
 		var prodPrice = prod[i].children[2].innerText.split(' ')[0];
 		var id = i+1;
-		console.log(id);
 
 		var productObj = {
 			category : "Hot Offers",
@@ -633,10 +632,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		digitalData.product.push(productObj);  
 	}
+</script>
+<script>
+	document.getElementById('view_cart').addEventListener('click', function() {
+		digitalData.product = [];
+		let prod = document.getElementsByClassName('minicart-item');
+		for(let i = 0; i < prod.length; i++) {
+			var prodName = prod[i].children[0].children[0].innerText;
+			var prodPrice = prod[i].children[3].children[0].innerText;
+			var qty = prod[i].children[1].children[0].getAttribute('value');
 
-
-
-
+			var productObj = {
+			category : "Hot Offers",
+			name: prodName,
+			qty: 1,
+			price: prodPrice
+			}
+			
+			digitalData.product.push(productObj);
+		}
+	})
 </script>
 <script src="js/bootstrap.min.js"></script>
 <script>
