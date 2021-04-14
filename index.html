@@ -79,7 +79,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					device: currDevice,
 					date: currDate
 				},
-				product : []
+				product : [],
+				removedProd : []
 		}
 	</script>
 	
@@ -94,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<a id="spl" href="products.html">Today's special Offers !</a>
 		</div>
 		<div class="w3l_search">
-			<form action="/products.html" method="post">
+			<form action="/products.html">
 				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
 				<input type="submit" value="">
 			</form>
@@ -104,7 +105,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <fieldset>
                     <input type="hidden" name="cmd" value="_cart" />
                     <input type="hidden" name="display" value="1" />
-                    <input type="submit" name="submit" id="view_cart" value="View your cart" class="button" />
+                    <input type="submit" name="submit" id="view_cart" value="View your cart" class="button viewcartbtn" />
                 </fieldset>
             </form>
 		</div>
@@ -336,7 +337,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" onclick ="test()" name="submit" value="Add to cart" class="button" id="addtocart"/>
+													<input type="submit" name="submit" value="Add to cart" class="button addtocartbtn" id="addtocart"/>
 												</fieldset>
 													
 											</form>
@@ -371,7 +372,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" id="addtocart"/>
+													<input type="submit" name="submit" value="Add to cart" class="button addtocartbtn" id="addtocart"/>
 												</fieldset>
 											</form>
 										</div>
@@ -407,7 +408,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" id="addtocart"/>
+													<input type="submit" name="submit" value="Add to cart" class="button addtocartbtn" id="addtocart"/>
 												</fieldset>
 											</form>
 										</div>
@@ -443,7 +444,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" id="addtocart"/>
+													<input type="submit" name="submit" value="Add to cart" class="button addtocartbtn" id="addtocart"/>
 												</fieldset>
 											</form>
 										</div>
@@ -635,24 +636,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script>
 	document.getElementById('view_cart').addEventListener('click', function() {
+		var prodArr = [];
 		digitalData.product = [];
 		let prod = document.getElementsByClassName('minicart-item');
 		for(let i = 0; i < prod.length; i++) {
 			var prodName = prod[i].children[0].children[0].innerText;
-			var prodPrice = prod[i].children[3].children[0].innerText;
+			var prodPrice = prod[i].children[3].children[0].innerText.slice(1);
 			var qty = prod[i].children[1].children[0].getAttribute('value');
 
 			var productObj = {
-			category : "Hot Offers",
-			name: prodName,
-			qty: qty,
-			price: prodPrice
+				category : "Hot Offers",
+				name: prodName,
+				qty: qty,
+				price: prodPrice
 			}
 			
 			digitalData.product.push(productObj);
+			prodArr.push(productObj);
 		}
+		console.log(prodArr);
+		localStorage.setItem('Products',JSON.stringify(prodArr));
 		_satellite.track('products', digitalData.product);
-		console.log(digitalData.product);
 	})
 </script>
 
@@ -689,6 +693,37 @@ $(document).ready(function(){
 	</script>
 <!-- //here ends scrolling icon -->
 <script src="js/minicart.js"></script>
+
+<script>
+	document.getElementById('view_cart').addEventListener('click', function () {
+		var removebtn = document.getElementsByClassName('minicart-remove');
+		digitalData.removedProd = [];
+		for(var i = 0; i < removebtn.length; i++) {
+			var button = removebtn[i];
+			button.addEventListener('click', removeItemClicked);
+		}
+
+		function removeItemClicked(event) {
+			var btn = event.target;
+			var prodName = btn.parentElement.parentElement.children[0].children[0].innerText;
+			var prodPrice = btn.parentElement.parentElement.children[3].children[0].innerText.slice(1);
+
+			var productObj = {
+				category : "Hot Offers",
+				name: prodName,
+				price: prodPrice
+			}
+			
+			digitalData.removedProd.push(productObj);
+			_satellite.track('removedProduct', digitalData.removedProd);
+			
+		}
+	})
+	
+	
+</script>
+
+
 <script>
 		paypal.minicart.render();
 

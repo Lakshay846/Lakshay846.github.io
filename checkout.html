@@ -27,7 +27,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
 <script type="text/javascript" src="js/datalayer.js"></script>
-<!-- <script src="//assets.adobedtm.com/224be2da76aa/b9d7248f124b/launch-e74d8c1cfdcd-development.min.js" async></script> -->
+<script>
+	var pagename = document.title;
+		var url = document.URL;
+		var host = window.location.host;
+		var d1 = new Date(); 
+		var currDate = d1.toISOString().slice(0, 10);
+		var currDevice = "";
+
+		if(screen.width <= 421)
+			currDevice = "Mobile";
+		else if (screen.width > 421 && screen.width <= 1023)
+			currDevice = "Tablet";
+		else
+			currDevice = "Desktop";
+
+	var digitalData = {
+		page: {
+			pageName: pagename,
+			pageURL : url,
+			channel : "Checkout Section"
+		},
+		user:{
+			userID : "lakshay846"
+		},
+		information:{
+			domain : host,
+			device: currDevice,
+			date: currDate
+		},
+		product : [],
+		removedProd : []
+	}
+</script>
+<script src="//assets.adobedtm.com/224be2da76aa/4a3273e4f5dc/launch-76887d252794-development.min.js" async></script>
 </head>
 	
 <body>
@@ -307,7 +340,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</section>
 								</form>
 									<div class="checkout-right-basket">
-				        	<a href="payment.html">Make a Payment <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+				        	<a href="#" id="paymentbtn">Make a Payment <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
 			      	</div>
 					</div>
 			
@@ -509,6 +542,17 @@ $(document).ready(function(){
 			$().UItoTop({ easingType: 'easeOutQuart' });
 								
 			});
+	</script>
+	<script>
+		document.getElementById('paymentbtn').addEventListener('click', function() {
+
+			digitalData.product = JSON.parse(localStorage.getItem('Products'));
+		
+			var r = Math.floor(Math.random() * 1000) + 1;
+			localStorage.setItem('purchaseid', r);
+		
+			_satellite.track('purchase', digitalData.product);
+		})
 	</script>
 <!-- //here ends scrolling icon -->
 <script src="js/minicart.js"></script>
