@@ -30,7 +30,7 @@
 				loggedin: JSON.parse(localStorage.getItem('isLoggedIn')),
 			},
 			category: {
-				primaryCategory: "Login",
+				primaryCategory: "",
 				subCategory1: "",
 				subCategory2: "",
 				subCategory3: "",
