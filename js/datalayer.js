@@ -1,4 +1,5 @@
 //DATA LAYER
+window.adobeDataLayer = window.adobeDataLayer || [];
 
 var pagename = document.title;
 var url = document.URL;
@@ -19,10 +20,8 @@ localStorage.setItem("isLoggedIn", false);
 setInterval(() => {
 	d1 = new Date()
 	currTime = d1.toLocaleTimeString()
-	digitalData.attributes.time = currTime;
 }, 1000);
 
-window.adobeDataLayer = window.adobeDataLayer || [];
 window.adobeDataLayer.push({
 	"event": "pageload",
 	"data":{
