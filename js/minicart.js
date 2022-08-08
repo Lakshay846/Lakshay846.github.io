@@ -2009,6 +2009,16 @@ minicart.reset = function () {
     viewModel.redraw();
 };
 
+var pageName = window.location.pathname;
+if(pageName === './confirmation.html') {
+  minicart.reset = function () {
+    cartModel.destroy();
+
+    viewModel.hide();
+    viewModel.redraw();
+  };
+}
+
 
 
 

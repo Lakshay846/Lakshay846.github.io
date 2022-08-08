@@ -750,6 +750,21 @@ a.btn.btn-primary {
     border: none;
 }
 
+.confirm {
+	margin-bottom: 2em;
+}
+
+#products table {
+	text-align: center;
+	width: 100%;
+}
+
+#products table th{
+	padding: 12px 0;
+	text-align: center;
+	background-color: #84c639;
+	color: white;
+}
 
 
 .vertical_post h5 {

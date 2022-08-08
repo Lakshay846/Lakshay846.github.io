@@ -47,11 +47,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 		});
 	</script>-->
-	
 	<!--launch code-->
 	<script> !function(e,a,n,t){var i=e.head;if(i){ if (a) return; var o=e.createElement("style"); o.id="alloy-prehiding",o.innerText=n,i.appendChild(o),setTimeout(function(){o.parentNode&&o.parentNode.removeChild(o)},t)}} (document, document.location.href.indexOf("adobe_authoring_enabled") !== -1, ".personalization-container { opacity: 0 !important }", 3000); </script>
 	<script src="https://assets.adobedtm.com/4ef014d90ea4/4d138f3a15dd/launch-24969202f47d-development.min.js" async></script>
-	<script src="js/datalayer.js"></script>
+	
 </head>
 	
 <body>
@@ -601,6 +600,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script> -->
 
 <!-- <script>
+	var digitalData = {
+		page: {
+			pageName: pagename,
+			pageURL : url,
+			deviceType: currDevice,
+			page_level: 3,
+			loggedin: JSON.parse(localStorage.getItem('isLoggedIn')),
+		},
+		category: {
+			primaryCategory: "",
+			subCategory1: "",
+			subCategory2: "",
+			subCategory3: "",
+
+		},
+		attributes: {
+			country: "IN",
+			date: currDate,
+			time: currTime,
+			domain: host
+		},
+		user:{
+			userID : "lakshay846"
+		},
+		product : []
+}
+
 	document.getElementById('view_cart').addEventListener('click', function() {
 		var prodArr = [];
 		digitalData.product = [];
@@ -622,7 +648,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 		console.log(prodArr);
 		localStorage.setItem('Products',JSON.stringify(prodArr));
-		_satellite.track('products', digitalData.product);
 	})
 </script> -->
 
@@ -659,6 +684,7 @@ $(document).ready(function(){
 	</script>
 <!-- //here ends scrolling icon -->
 <script src="js/minicart.js"></script>
+<script src="js/datalayer.js" defer></script>
 
 <!-- <script>
 	document.getElementById('view_cart').addEventListener('click', function () {

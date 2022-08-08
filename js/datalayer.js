@@ -1,5 +1,5 @@
 //DATA LAYER
-window.adobeDataLayer = window.adobeDataLayer || [];
+// window.adobeDataLayer = window.adobeDataLayer || [];
 
 var pagename = document.title;
 var url = document.URL;
@@ -15,16 +15,46 @@ else if (screen.width > 421 && screen.width <= 1023)
 else
 	currDevice = "Desktop";
 
-localStorage.setItem("isLoggedIn", false);	
+var isLoggedIn = JSON.parse(sessionStorage.getItem('isLoggedIn'));
+console.log(isLoggedIn); 
 
 setInterval(() => {
 	d1 = new Date()
 	currTime = d1.toLocaleTimeString()
 }, 1000);
 
-window.adobeDataLayer.push({
-	"event": "pageload",
-	"data":{
+// window.adobeDataLayer.push({
+// 	"event": "pageload",
+// 	"data":{
+// 		page: {
+// 			pageName: pagename,
+// 			pageURL : url,
+// 			deviceType: currDevice,
+// 			page_level: 3,
+// 			loggedin: isLoggedIn,
+// 		},
+// 		category: {
+// 			primaryCategory: "",
+// 			subCategory1: "",
+// 			subCategory2: "",
+// 			subCategory3: "",
+
+// 		},
+// 		attributes: {
+// 			country: "IN",
+// 			date: currDate,
+// 			time: currTime,
+// 			domain: host
+// 		},
+// 		user:{
+// 			userID : "lakshay846"
+// 		},
+// 		product : []
+// }})
+
+
+
+window.digitalData = {
 		page: {
 			pageName: pagename,
 			pageURL : url,
@@ -49,49 +79,45 @@ window.adobeDataLayer.push({
 			userID : "lakshay846"
 		},
 		product : []
-}})
+}
 
+let prod = document.getElementsByClassName('minicart-item');
+for(let i = 0; i < prod.length; i++) {
+	var prodName = prod[i].children[0].children[0].innerText;
+	var prodPrice = prod[i].children[3].children[0].innerText.slice(1);
+	var qty = prod[i].children[1].children[0].getAttribute('value');
 
+	var productObj = {
+		name: prodName,
+		qty: qty,
+		price: prodPrice
+	}
+	
+	digitalData.product.push(productObj);
+}
 
-// var digitalData = {
-// 		page: {
-// 			pageName: pagename,
-// 			pageURL : url,
-// 			deviceType: currDevice,
-// 			page_level: 3,
-// 			loggedin: JSON.parse(localStorage.getItem('isLoggedIn')),
-// 		},
-// 		category: {
-// 			primaryCategory: "",
-// 			subCategory1: "",
-// 			subCategory2: "",
-// 			subCategory3: "",
+if(prod.length >= 1) {
+	localStorage.setItem("PRODUCTS", JSON.stringify(digitalData.product));
+}
 
-// 		},
-// 		attributes: {
-// 			country: "IN",
-// 			date: currDate,
-// 			time: currTime,
-// 			domain: host
-// 		},
-// 		user:{
-// 			userID : "lakshay846"
-// 		},
-// 		product : []
+// let addToCartBtn = document.getElementById('addtocart');
+
+// if(addToCartBtn !== undefined) {
+// 	addToCartBtn.addEventListener('click', () => {
+// 		let prod = document.getElementsByClassName('minicart-item');
+// 		digitalData.product = []
+// 		for(let i = 0; i < prod.length; i++) {
+// 			var prodName = prod[i].children[0].children[0].innerText;
+// 			var prodPrice = prod[i].children[3].children[0].innerText.slice(1);
+// 			var qty = prod[i].children[1].children[0].getAttribute('value');
+	
+// 			var productObj = {
+// 				name: prodName,
+// 				qty: qty,
+// 				price: prodPrice
+// 			}
+			
+// 			digitalData.product.push(productObj);
+// 		}
+// 	})
 // }
-
-
-function test(){
-	$(".snipcart-details").click(function(){
-		var i = digitalData.product.length;
-		if(i<=0) {
-			var pname=jQuery(this).parents('.snipcart-item').find(".snipcart-thumb p").text();
-			digitalData.product.push(pname);
-		}
-		else {
-			digitalData.product.pop();
-			var pname=jQuery(this).parents('.snipcart-item').find(".snipcart-thumb p").text();
-			digitalData.product.push(pname);
-		}
-	});
-};
