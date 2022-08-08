@@ -15,9 +15,6 @@ else if (screen.width > 421 && screen.width <= 1023)
 else
 	currDevice = "Desktop";
 
-var isLoggedIn = JSON.parse(sessionStorage.getItem('isLoggedIn'));
-console.log(isLoggedIn); 
-
 setInterval(() => {
 	d1 = new Date()
 	currTime = d1.toLocaleTimeString()
@@ -60,10 +57,10 @@ window.digitalData = {
 			pageURL : url,
 			deviceType: currDevice,
 			page_level: 3,
-			loggedin: JSON.parse(localStorage.getItem('isLoggedIn')),
+			loggedin: JSON.parse(sessionStorage.getItem('isLoggedIn')),
 		},
 		category: {
-			primaryCategory: "",
+			primaryCategory: "Home",
 			subCategory1: "",
 			subCategory2: "",
 			subCategory3: "",
