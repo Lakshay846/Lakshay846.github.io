@@ -75,7 +75,8 @@ window.digitalData = {
 		user:{
 			userID : sessionStorage.getItem('userid')
 		},
-		product : []
+		product : [],
+		prodView: JSON.parse(localStorage.getItem("productViewed"))
 }
 
 let prod = document.getElementsByClassName('minicart-item');
@@ -118,3 +119,15 @@ if(prod.length >= 1) {
 // 		}
 // 	})
 // }
+
+var productViewWrappers = document.getElementsByClassName('snipcart-thumb');
+
+for(var i = 0; i < productViewWrappers.length; i++) {
+	var prodViewWrapper = productViewWrappers[i];
+	prodViewWrapper.addEventListener('click', getProdDesc);
+}
+
+function getProdDesc(event) {
+	console.log(event.target.parentElement.nextElementSibling.innerText);
+	localStorage.setItem("productViewed",JSON.stringify(event.target.parentElement.nextElementSibling.innerText));
+}

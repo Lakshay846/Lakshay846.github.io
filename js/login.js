@@ -18,7 +18,6 @@ var credentials = [
 
 function login() {
     sessionStorage.setItem('isLoggedIn', true)
-    console.log('Hello')
     let user = document.getElementById('username').value;
     let pass = document.getElementById('pwd').value;
     if(user === 'user1' && pass === 'pass1' || user === 'user2' && pass === 'pass2' ||user === 'user3' && pass === 'pass3' ) {
