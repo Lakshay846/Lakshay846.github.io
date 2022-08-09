@@ -73,7 +73,7 @@ window.digitalData = {
 			domain: host
 		},
 		user:{
-			userID : "lakshay846"
+			userID : sessionStorage.getItem('userid')
 		},
 		product : []
 }
