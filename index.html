@@ -739,6 +739,7 @@ $(document).ready(function(){
 		if(!sessionStorage.getItem("firstTime")) {
 			sessionStorage.setItem('isLoggedIn', false);
 			localStorage.removeItem('PPMiniCart');
+			localStorage.removeItem('prodId');
 			localStorage.removeItem('PRODUCTS');
 			localStorage.removeItem('productViewed');
 			sessionStorage.setItem("firstTime", true);

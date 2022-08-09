@@ -76,7 +76,10 @@ window.digitalData = {
 			userID : sessionStorage.getItem('userid')
 		},
 		product : [],
-		prodView: JSON.parse(localStorage.getItem("productViewed"))
+		prodView: {
+			id: JSON.parse(localStorage.getItem('prodId')),
+			prodName: JSON.parse(localStorage.getItem("productViewed")) 
+		},
 }
 
 let prod = document.getElementsByClassName('minicart-item');
@@ -129,5 +132,6 @@ for(var i = 0; i < productViewWrappers.length; i++) {
 
 function getProdDesc(event) {
 	console.log(event.target.parentElement.nextElementSibling.innerText);
+	localStorage.setItem("prodId", JSON.stringify(`EC` + Math.floor(1000 + Math.random() * 9000)))
 	localStorage.setItem("productViewed",JSON.stringify(event.target.parentElement.nextElementSibling.innerText));
 }
