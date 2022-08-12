@@ -1,19 +1,17 @@
 let products = JSON.parse(localStorage.getItem("PRODUCTS"));
-let total;
-console.log(products)
+var total = 0;
 
 document.getElementById('numofproducts').innerText = `${products.length} products`;
 
 var tableHtml = '<table><tr><th>Name</th><th>Quantity</th><th>Price</th></tr>';
 
-for(let i = 0; i < products.length; i++) {
-    if(!isNaN(Number(products[i].price)))
-        total += Number(products[i].price)
+for(var i = 0; i < products.length; i++) {
+    total += Number(products[i].price)
     tableHtml += `<tr><td>${products[i].name}</td><td>${products[i].qty}</td><td>${products[i].price}</td><tr>`
 }
 
-console.log(total)
+total = total.toPrecision(4);
 
-tableHtml += '</table>'
+tableHtml += `<tr><td></td><td>TOTAL</td><td>${total}</td></tr></table>`
 
 document.getElementById('products').innerHTML = tableHtml;

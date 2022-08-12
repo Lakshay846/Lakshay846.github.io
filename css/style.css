@@ -755,6 +755,7 @@ a.btn.btn-primary {
 }
 
 #products table {
+	font-weight: bold;
 	text-align: center;
 	width: 100%;
 }
