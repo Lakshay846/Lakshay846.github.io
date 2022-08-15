@@ -15,3 +15,5 @@ total = total.toPrecision(4);
 tableHtml += `<tr><td></td><td>TOTAL</td><td>${total}</td></tr></table>`
 
 document.getElementById('products').innerHTML = tableHtml;
+
+sessionStorage.setItem('Amount', total);

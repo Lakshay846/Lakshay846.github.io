@@ -60,7 +60,7 @@ window.digitalData = {
 			loggedin: JSON.parse(sessionStorage.getItem('isLoggedIn')),
 		},
 		category: {
-			primaryCategory: "Home",
+			primaryCategory: "",
 			subCategory1: "",
 			subCategory2: "",
 			subCategory3: "",
@@ -123,6 +123,7 @@ if(prod.length >= 1) {
 // 	})
 // }
 
+//Prod View
 var productViewWrappers = document.getElementsByClassName('snipcart-thumb');
 
 for(var i = 0; i < productViewWrappers.length; i++) {
@@ -131,7 +132,10 @@ for(var i = 0; i < productViewWrappers.length; i++) {
 }
 
 function getProdDesc(event) {
-	console.log(event.target.parentElement.nextElementSibling.innerText);
 	localStorage.setItem("prodId", JSON.stringify(`EC` + Math.floor(1000 + Math.random() * 9000)))
 	localStorage.setItem("productViewed",JSON.stringify(event.target.parentElement.nextElementSibling.innerText));
 }
+
+//Primary Category
+var breadcrumb = $('div.products-breadcrumb').find('ul>li').eq(1).text();
+digitalData.category.primaryCategory = breadcrumb;
