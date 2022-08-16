@@ -141,5 +141,5 @@ var breadcrumb = $('div.products-breadcrumb').find('ul>li').eq(1).text();
 if(breadcrumb === '') {
 	digitalData.category.primaryCategory = "Home";
 }
-
-digitalData.category.primaryCategory = breadcrumb;
+else
+	digitalData.category.primaryCategory = breadcrumb;
