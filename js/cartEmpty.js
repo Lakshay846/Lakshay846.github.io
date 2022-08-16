@@ -23,5 +23,8 @@ if(pageName === '/confirmation.html') {
 
     let orderAmount = sessionStorage.getItem('Amount');
     digitalData.orderTotal = orderAmount;
+
+    let purchaseId = localStorage.getItem("purchaseid");
+    digitalData.orderId = purchaseId;
 }
 
