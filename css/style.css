@@ -769,6 +769,14 @@ button.submit {
 	margin: 2em auto;
 }
 
+#shopmore {
+	background: none;
+	border: none;
+	outline: none;
+	text-decoration: underline;
+	margin-top: 1em;
+}
+
 #products table {
 	font-weight: bold;
 	text-align: center;
